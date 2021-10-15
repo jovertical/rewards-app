@@ -6,10 +6,10 @@ let server = (0, fastify_1.default)();
 server.register(fastify_cors_1.default, {
     origin: '*',
 });
-server.get('/health', async (request, reply) => {
-    return 'ok';
+server.get('/api/health', async (request, reply) => {
+    return reply.send({ message: 'OK' });
 });
-server.get('/prices', async (request, reply) => {
+server.get('/api/prices', async (request, reply) => {
     return reply.header('Content-Type', 'application/json').send([
         {
             id: 1,
