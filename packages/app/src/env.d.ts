@@ -7,15 +7,6 @@ declare module '*.vue' {
   export default component;
 }
 
-interface ImportMetaEnv extends Readonly<Record<string, string>> {
-  readonly VITE_APP_NAME: string;
-  readonly VITE_API_URL: string;
-}
-
-interface ImportMeta {
-  readonly env: ImportMetaEnv;
-}
-
 interface Prize {
   id: string;
   name: string;

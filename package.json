@@ -2,10 +2,9 @@
   "name": "root",
   "private": true,
   "scripts": {
-    "dev": "./node_modules/.bin/lerna run dev --parallel"
-  },
-  "dependencies": {
-    "cross-env": "^7.0.3"
+    "setup": "./node_modules/.bin/lerna clean -y && ./node_modules/.bin/lerna bootstrap",
+    "dev": "./node_modules/.bin/lerna run dev --parallel",
+    "build": "./node_modules/.bin/lerna run build --parallel"
   },
   "devDependencies": {
     "lerna": "^4.0.0"
