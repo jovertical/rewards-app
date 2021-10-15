@@ -7,6 +7,10 @@ server.register(fastifyCors, {
   origin: '*', // TODO: Only accept official frontend origins
 });
 
+server.get('/', async (request, reply) => {
+  return reply.send('ResMan Rewards API');
+});
+
 server.get('/api/health', async (request, reply) => {
   return reply.send({ message: 'OK' });
 });
