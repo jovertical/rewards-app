@@ -30,7 +30,7 @@ server.get('/api/prices', async (request, reply) => {
   ]);
 });
 
-server.listen(8080, (error, address) => {
+server.listen(process.env.PORT || 8080, (error, address) => {
   if (error) {
     console.error(error);
     process.exit(1);
