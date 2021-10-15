@@ -34,10 +34,10 @@ server.get('/api/prices', async (request, reply) => {
   ]);
 });
 
-server.listen(process.env.PORT || 8080, (error, address) => {
+server.listen(process.env.PORT || 8080, '0.0.0.0', (error, address) => {
   if (error) {
     console.error(error);
-    return;
+    process.exit(1);
   }
 
   console.log(`Server listening at ${address}`);
