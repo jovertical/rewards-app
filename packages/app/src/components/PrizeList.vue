@@ -19,7 +19,6 @@ defineExpose({ prizes });
 
 <template>
   <ul v-for="prize in prizes" :key="prize.id">
-    <!-- Test... -->
     <PrizeItem :prize="prize" />
   </ul>
 </template>

@@ -17,9 +17,13 @@ npm run dev
 ## Deployment
 
 ```bash
+# First of all, create the remote branches:
+git remote add heroku-app https://git.heroku.com/resman-rewards-app.git
+git remote add heroku-api https://git.heroku.com/resman-rewards-api.git
+
 # Deploying the API
-git subtree push --prefix packages/app heroku main
+git subtree push --prefix packages/app heroku-app main
 
 # Deploying the App
-git subtree push --prefix packages/api heroku main
+git subtree push --prefix packages/api heroku-api main
 ```
