@@ -1,0 +1,17 @@
+{
+  "name": "@rewards/api",
+  "version": "0.0.0",
+  "scripts": {
+    "dev": "cross-env NODE_PATH=src NODE_ENV=development node_modules/.bin/nodemon --exec ts-node src/main.ts --watch src"
+  },
+  "dependencies": {
+    "fastify": "^3.22.0",
+    "fastify-cors": "^6.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.0",
+    "nodemon": "^2.0.13",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  }
+}
