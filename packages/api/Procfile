@@ -1,1 +1,1 @@
-web: env NODE_PATH=./ node dist/main.js
+web: env NODE_PATH=./dist node dist/main.js
