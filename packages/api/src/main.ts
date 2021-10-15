@@ -7,11 +7,11 @@ server.register(fastifyCors, {
   origin: '*', // TODO: Only accept official frontend origins
 });
 
-server.get('/health', async (request, reply) => {
-  return 'ok';
+server.get('/api/health', async (request, reply) => {
+  return reply.send({ message: 'OK' });
 });
 
-server.get('/prices', async (request, reply) => {
+server.get('/api/prices', async (request, reply) => {
   return reply.header('Content-Type', 'application/json').send([
     {
       id: 1,
