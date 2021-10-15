@@ -24,9 +24,9 @@ git remote add heroku-api https://git.heroku.com/resman-rewards-api.git
 # Then, build the applications
 npm run build
 
-# Deploy the API
+# Deploy the App
 git subtree push --prefix packages/app heroku-app main
 
-# Deploy the App
+# Deploy the Api
 git subtree push --prefix packages/api heroku-api main
 ```
