@@ -1,8 +1,16 @@
 <script setup lang="ts">
-import PrizeList from './components/PrizeList.vue';
+import Footer from './components/Footer.vue';
+import Header from './components/Header.vue';
 </script>
 
 <template>
-  <h1>Prizes App</h1>
-  <PrizeList />
+  <div class="min-h-screen bg-white">
+    <Header />
+
+    <div>
+      <router-view />
+    </div>
+
+    <Footer />
+  </div>
 </template>
