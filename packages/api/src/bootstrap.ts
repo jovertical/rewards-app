@@ -1,10 +1,12 @@
-import { FastifyInstance } from 'fastify';
+import fastify from 'fastify';
 import fastifyCors from 'fastify-cors';
 import fastifyEnv from 'fastify-env';
 import fastifyMongodb from 'fastify-mongodb';
 import loadRoutes from './routes';
 
-export default async (server: FastifyInstance) => {
+export default async () => {
+  let server = fastify();
+
   await server.register(fastifyEnv, {
     dotenv: {
       path: `${__dirname}/../.env`,
