@@ -5,7 +5,7 @@ import Prize from './models/Prize';
 interface PrizeType {
   name: string;
   description: string;
-  stocks?: number;
+  stock?: number;
   image_url?: string; // TODO: this must be a file...
 }
 
@@ -43,7 +43,7 @@ export default (app: FastifyInstance) => {
       let prize = await Prize.create({
         name: request.body.name,
         description: request.body.description,
-        stocks: request.body.stocks,
+        stock: request.body.stock,
         image_url: request.body.image_url, // TODO: this must be generated from an uploaded file...
       });
 
