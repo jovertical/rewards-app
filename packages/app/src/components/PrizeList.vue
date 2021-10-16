@@ -18,7 +18,7 @@ defineExpose({ prizes });
 </script>
 
 <template>
-  <ul v-for="prize in prizes" :key="prize.id">
-    <PrizeItem :prize="prize" />
-  </ul>
+  <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+    <PrizeItem v-for="prize in prizes" :key="prize.id" :prize="prize" />
+  </div>
 </template>

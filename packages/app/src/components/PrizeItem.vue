@@ -10,5 +10,5 @@ defineProps({
 </script>
 
 <template>
-  <li>{{ prize.name }}</li>
+  <div>{{ prize.name }}</div>
 </template>
