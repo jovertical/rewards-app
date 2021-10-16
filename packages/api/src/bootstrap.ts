@@ -5,9 +5,9 @@ import fastifyMongodb from 'fastify-mongodb';
 import loadRoutes from './routes';
 
 export default async () => {
-  let server = fastify();
+  let app = fastify();
 
-  await server.register(fastifyEnv, {
+  await app.register(fastifyEnv, {
     dotenv: {
       path: `${__dirname}/../.env`,
       debug: true,
@@ -28,17 +28,17 @@ export default async () => {
     },
   });
 
-  server.register(fastifyCors, {
+  app.register(fastifyCors, {
     origin: '*', // TODO: Only accept official frontend origins
   });
 
-  server.register(fastifyMongodb, {
+  app.register(fastifyMongodb, {
     forceClose: true,
     // @ts-ignore
-    url: server.config.DATABASE_URL,
+    url: app.config.DATABASE_URL,
   });
 
-  loadRoutes(server);
+  loadRoutes(app);
 
-  return server;
+  return app;
 };
