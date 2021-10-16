@@ -44,7 +44,7 @@ export default (app: FastifyInstance) => {
         name: request.body.name,
         description: request.body.description,
         stocks: request.body.stocks,
-        imageUrl: request.body.image_url, // TODO: this must be generated from an uploaded file...
+        image_url: request.body.image_url, // TODO: this must be generated from an uploaded file...
       });
 
       return reply.header('Content-Type', 'application/json').send(prize);
