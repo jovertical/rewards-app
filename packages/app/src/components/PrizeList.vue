@@ -5,7 +5,7 @@ import PrizeItem from './PrizeItem.vue';
 let prizes = ref<Prize[]>([]);
 
 async function getPrizes(): Promise<void> {
-  fetch(`${import.meta.env.VITE_API_URL}/api/prices`)
+  fetch(`${import.meta.env.VITE_API_URL}/api/prizes`)
     .then((response) => response.json())
     .then((data) => {
       prizes.value = data;

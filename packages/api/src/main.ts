@@ -1,44 +1,15 @@
-import fastify from 'fastify';
-import fastifyCors from 'fastify-cors';
+import fastify, { FastifyInstance } from 'fastify';
+import bootstrap from './bootstrap';
 
 let server = fastify();
 
-server.register(fastifyCors, {
-  origin: '*', // TODO: Only accept official frontend origins
-});
+bootstrap(server).then((app: FastifyInstance) => {
+  app.listen(process.env.PORT || 8080, '0.0.0.0', (error, address): void => {
+    if (error) {
+      console.error(error);
+      process.exit(1);
+    }
 
-server.get('/', async (request, reply) => {
-  return reply.send('ResMan Rewards API');
-});
-
-server.get('/api/health', async (request, reply) => {
-  return reply.send({ message: 'OK' });
-});
-
-server.get('/api/prices', async (request, reply) => {
-  return reply.header('Content-Type', 'application/json').send([
-    {
-      id: 1,
-      name: 'Win a Flyaway',
-      description: 'All expense paid trip to the US',
-      stock: 3,
-    },
-
-    {
-      id: 2,
-      name: 'Watch the NBA',
-      description:
-        'Win a front court seat to watch the Los Angeles Lakers live!',
-      stock: 1,
-    },
-  ]);
-});
-
-server.listen(process.env.PORT || 8080, '0.0.0.0', (error, address) => {
-  if (error) {
-    console.error(error);
-    process.exit(1);
-  }
-
-  console.log(`Server listening at ${address}`);
+    console.log(`Server listening at ${address}`);
+  });
 });
