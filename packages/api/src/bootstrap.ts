@@ -1,6 +1,7 @@
 import fastify from 'fastify';
 import fastifyCors from 'fastify-cors';
 import fastifyEnv from 'fastify-env';
+import fastifyFormbody from 'fastify-formbody';
 import fastifyMulter from 'fastify-multer';
 import fastifyMongoose from './plugins/mongoose';
 import Prize from './models/Prize';
@@ -29,6 +30,8 @@ export default async () => {
       },
     },
   });
+
+  app.register(fastifyFormbody);
 
   app.register(fastifyCors, {
     origin: '*', // TODO: Only accept official frontend origins
