@@ -5,8 +5,7 @@ import PrizeItem from './PrizeItem.vue';
 let prizes = ref<Prize[]>([]);
 
 async function getPrizes(): Promise<void> {
-  // fetch(`http://localhost:8080/api/prices`)
-  fetch(`https://resman-rewards-api.herokuapp.com/api/prices`)
+  fetch(`${import.meta.env.VITE_API_URL}/api/prices`)
     .then((response) => response.json())
     .then((data) => {
       prizes.value = data;

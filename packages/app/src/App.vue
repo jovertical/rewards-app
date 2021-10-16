@@ -3,6 +3,6 @@ import PrizeList from './components/PrizeList.vue';
 </script>
 
 <template>
-  <h1>Prices App</h1>
+  <h1>Prizes App</h1>
   <PrizeList />
 </template>
