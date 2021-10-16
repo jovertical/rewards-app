@@ -12,6 +12,5 @@
   "engineStrict": true,
   "engines": {
     "node": ">= 14.x"
-  },
-  "dependencies": {}
+  }
 }

@@ -3,6 +3,7 @@
     "bradlc.vscode-tailwindcss",
     "esbenp.prettier-vscode",
     "folke.vscode-monorepo-workspace",
-    "johnsoncodehk.volar"
+    "johnsoncodehk.volar",
+    "stylelint.vscode-stylelint"
   ]
 }
