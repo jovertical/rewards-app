@@ -8,8 +8,9 @@ declare module '*.vue' {
 }
 
 interface Prize {
-  id: string;
+  _id: string;
   name: string;
   description: string;
   stock: number;
+  image_url?: string;
 }

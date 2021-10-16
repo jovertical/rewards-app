@@ -11,7 +11,7 @@ let schema = new mongoose.Schema({
     required: true,
   },
 
-  imageUrl: {
+  image_url: {
     type: String,
     required: false,
   },
