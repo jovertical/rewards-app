@@ -1,7 +1,8 @@
 import fastify from 'fastify';
 import fastifyCors from 'fastify-cors';
 import fastifyEnv from 'fastify-env';
-import fastifyMongoose from './plugins/fastify-mongoose';
+import fastifyMulter from 'fastify-multer';
+import fastifyMongoose from './plugins/mongoose';
 import Prize from './models/Prize';
 import loadRoutes from './routes';
 
@@ -41,6 +42,8 @@ export default async () => {
       Prize,
     },
   });
+
+  app.register(fastifyMulter.contentParser);
 
   loadRoutes(app);
 
