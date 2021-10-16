@@ -1,7 +1,8 @@
 import fastify from 'fastify';
 import fastifyCors from 'fastify-cors';
 import fastifyEnv from 'fastify-env';
-import fastifyMongodb from 'fastify-mongodb';
+import fastifyMongoose from './plugins/fastify-mongoose';
+import Prize from './models/Prize';
 import loadRoutes from './routes';
 
 export default async () => {
@@ -32,10 +33,13 @@ export default async () => {
     origin: '*', // TODO: Only accept official frontend origins
   });
 
-  app.register(fastifyMongodb, {
-    forceClose: true,
+  // @ts-ignore
+  app.register(fastifyMongoose, {
     // @ts-ignore
     url: app.config.DATABASE_URL,
+    models: {
+      Prize,
+    },
   });
 
   loadRoutes(app);

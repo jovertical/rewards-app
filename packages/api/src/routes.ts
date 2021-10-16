@@ -1,5 +1,5 @@
 import { FastifyInstance, FastifyReply } from 'fastify';
-import { Collection } from 'mongodb';
+import Prize from './models/Prize';
 
 export default (app: FastifyInstance) => {
   app.get('/', async function (request, reply): Promise<FastifyReply> {
@@ -9,10 +9,7 @@ export default (app: FastifyInstance) => {
   app.get(
     '/api/prizes',
     async function (request, reply): Promise<FastifyReply> {
-      // @ts-ignore
-      let collection: Collection = this.mongo.db.collection('prizes');
-
-      let prizes = await collection.find({}).toArray();
+      let prizes = await Prize.find();
 
       return reply.header('Content-Type', 'application/json').send(prizes);
     }
