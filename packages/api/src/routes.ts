@@ -1,4 +1,5 @@
 import { FastifyInstance, FastifyReply } from 'fastify';
+import multer from 'fastify-multer';
 import Prize from './models/Prize';
 
 interface PrizeType {
@@ -9,10 +10,13 @@ interface PrizeType {
 }
 
 export default (app: FastifyInstance) => {
+  let upload = multer({ dest: 'uploads' });
+
   app.get('/', async function (request, reply): Promise<FastifyReply> {
     return reply.send('ResMan Rewards API');
   });
 
+  // TODO: Require authentication...
   app.get(
     '/api/prizes',
     async function (request, reply): Promise<FastifyReply> {
@@ -22,7 +26,9 @@ export default (app: FastifyInstance) => {
     }
   );
 
+  // TODO: Require authentication...
   app.post<{ Body: PrizeType }>('/api/admin/prizes', {
+    preHandler: upload.single('image'), // TODO: Process the uploaded file...
     handler: async function (request, reply): Promise<FastifyReply> {
       let prize = await Prize.create({
         name: request.body.name,
