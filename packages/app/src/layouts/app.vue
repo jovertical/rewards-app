@@ -7,7 +7,7 @@ import Header from '@/components/Header.vue';
   <div class="min-h-screen bg-white">
     <Header />
 
-    <div class="bg-gray-lightest">
+    <div>
       <router-view />
     </div>
 

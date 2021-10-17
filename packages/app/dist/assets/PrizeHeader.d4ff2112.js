@@ -1,1 +1,0 @@
-import{_ as t}from"./index.6f2e1b56.js";import{o as r,c as s,a as e}from"./vendor.1ea87c8f.js";const o={},a=e("div",{class:"bg-blue py-20"},[e("h1",{class:"text-center text-5xl text-white font-eloquia"},"Rewards")],-1),c=[a];function n(_,d){return r(),s("header",null,c)}var f=t(o,[["render",n]]);export{f as P};
