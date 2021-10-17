@@ -16,7 +16,7 @@ watch(
   () => route?.meta?.layout,
   (value) => {
     // @ts-ignore
-    let newLayout = layouts[value];
+    let newLayout = layouts[value] || layouts.app;
 
     if (newLayout) {
       layout.value = newLayout;

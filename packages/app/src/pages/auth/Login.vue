@@ -85,29 +85,7 @@ async function submit() {
             />
           </Form.Group>
 
-          <div class="flex items-center justify-between">
-            <div class="flex items-center">
-              <input
-                id="remember-me"
-                name="remember-me"
-                type="checkbox"
-                class="
-                  h-4
-                  w-4
-                  text-yellow-dark
-                  focus:text-yellow
-                  border-gray-light
-                  rounded
-                "
-              />
-              <label
-                for="remember-me"
-                class="ml-2 block text-sm text-gray-darkest"
-              >
-                Remember me
-              </label>
-            </div>
-
+          <div class="flex justify-end">
             <div class="text-sm">
               <a href="javascript:void(0);" class="font-medium text-yellow">
                 Forgot your password?

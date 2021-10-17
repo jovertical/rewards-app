@@ -1,5 +1,8 @@
 <script setup lang="ts">
 import logoUrl from '@/assets/images/logo.png';
+import useAuth from '@/hooks/useAuth';
+
+let { authenticated, user, logout } = useAuth();
 
 defineExpose({ logoUrl });
 </script>
@@ -15,8 +18,48 @@ defineExpose({ logoUrl });
           </router-link>
         </div>
 
-        <div class="hidden sm:-my-px sm:ml-6 sm:flex sm:space-x-8">
-          <a href="#" class="flex-shrink-0 group block">
+        <div class="flex sm:-my-px sm:ml-6 sm:space-x-8">
+          <router-link
+            v-if="!authenticated"
+            :to="{ name: 'auth.login' }"
+            class="
+              text-yellow
+              hover:text-yellow-dark
+              focus:underline focus:outline-none
+            "
+          >
+            Login
+          </router-link>
+
+          <router-link
+            v-if="!authenticated"
+            :to="{ name: 'auth.register' }"
+            class="
+              text-yellow
+              hover:text-yellow-dark
+              focus:underline focus:outline-none
+            "
+          >
+            Sign up
+          </router-link>
+
+          <button
+            v-if="authenticated"
+            class="
+              text-yellow
+              hover:text-yellow-dark
+              focus:underline focus:outline-none
+            "
+            @click="logout()"
+          >
+            Logout
+          </button>
+
+          <a
+            v-if="authenticated"
+            href="javascript:void(0);"
+            class="flex-shrink-0 group block"
+          >
             <div class="flex items-center">
               <div>
                 <span
@@ -49,7 +92,7 @@ defineExpose({ logoUrl });
                     group-hover:text-gray-darkest
                   "
                 >
-                  John Doe
+                  {{ user?.name }}
                 </p>
               </div>
             </div>

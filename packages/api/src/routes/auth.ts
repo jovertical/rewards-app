@@ -1,6 +1,7 @@
 import { FastifyInstance, FastifyRegisterOptions } from 'fastify';
 import S from 'fluent-json-schema';
 import bcrypt from 'bcrypt';
+import authenticateMiddleware from '../middleware/authenticate.middleware';
 import User from '../models/User';
 import { createAuthToken } from '../helpers';
 
@@ -85,9 +86,13 @@ export default (
     }
   );
 
-  app.post('/api/auth/logout', async function (request, reply) {
-    return reply.send('Ok');
-  });
+  app.post(
+    '/api/auth/logout',
+    { preHandler: authenticateMiddleware },
+    async function (request, reply) {
+      return reply.send('Ok');
+    }
+  );
 
   done();
 };
