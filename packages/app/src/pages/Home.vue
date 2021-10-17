@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import PrizeHeader from '../components/PrizeHeader.vue';
-import PrizeList from '../components/PrizeList.vue';
+import PrizeHeader from '@/components/PrizeHeader.vue';
+import PrizeList from '@/components/PrizeList.vue';
 </script>
 
 <template>

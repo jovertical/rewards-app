@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import logoUrl from '../assets/images/logo.png';
+import logoUrl from '@/assets/images/logo.png';
 
 defineExpose({ logoUrl });
 </script>

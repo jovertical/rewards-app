@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { ref } from 'vue';
-import PrizeItem from './PrizeItem.vue';
+import PrizeItem from '@/components/PrizeItem.vue';
 
 let prizes = ref<Prize[]>([]);
 

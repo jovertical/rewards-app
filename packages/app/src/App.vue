@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { shallowRef, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import AppLayout from './layouts/app.vue';
-import AuthLayout from './layouts/auth.vue';
+import AppLayout from '@/layouts/app.vue';
+import AuthLayout from '@/layouts/auth.vue';
 
 let route = useRoute();
 let layout = shallowRef(AppLayout);

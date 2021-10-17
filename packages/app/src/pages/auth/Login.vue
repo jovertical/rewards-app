@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import useAuth from '../../hooks/useAuth';
-import useError from '../../hooks/useError';
-import useForm from '../../hooks/useForm';
-import Alert from '../../components/Alert.vue';
-import Button from '../../components/Button.vue';
-import * as Form from '../../components/Form';
+import Alert from '@/components/Alert.vue';
+import Button from '@/components/Button.vue';
+import * as Form from '@/components/Form';
+import useAuth from '@/hooks/useAuth';
+import useError from '@/hooks/useError';
+import useForm from '@/hooks/useForm';
 
 let auth = useAuth();
 

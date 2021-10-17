@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
-import PrizeHeader from '../components/PrizeHeader.vue';
-import useAuth from '../hooks/useAuth';
+import PrizeHeader from '@/components/PrizeHeader.vue';
+import useAuth from '@/hooks/useAuth';
 
 let route = useRoute();
 let auth = useAuth();
