@@ -27,7 +27,7 @@ async function submit() {
   let body = await response.json();
 
   if (response.status !== 200) {
-    error.set(body.error);
+    error.set(body.error || body.message);
 
     return;
   }
