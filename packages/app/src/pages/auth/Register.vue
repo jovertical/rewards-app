@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import Alert from '@/components/Alert.vue';
 import Button from '@/components/Button.vue';
 import * as Form from '@/components/Form';
@@ -16,7 +17,15 @@ let form = useForm({
 
 let error = useError();
 
+let loading = ref(false);
+
 async function submit() {
+  if (loading.value) {
+    return;
+  }
+
+  loading.value = true;
+
   let response = await fetch(
     `${import.meta.env.VITE_API_URL}/api/auth/register`,
     {
@@ -33,8 +42,12 @@ async function submit() {
   if (response.status !== 201) {
     error.set(body.message || body.error);
 
+    loading.value = false;
+
     return;
   }
+
+  loading.value = false;
 
   auth.authenticate(body.data.token);
 }
@@ -99,7 +112,7 @@ async function submit() {
           </Form.Group>
 
           <div>
-            <Button type="submit">Sign Up</Button>
+            <Button type="submit" :loading="loading">Sign Up</Button>
           </div>
         </form>
       </div>

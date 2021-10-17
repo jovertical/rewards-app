@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { ref } from 'vue';
 import Alert from '@/components/Alert.vue';
 import Button from '@/components/Button.vue';
 import * as Form from '@/components/Form';
@@ -15,7 +16,15 @@ let form = useForm({
 
 let error = useError();
 
+let loading = ref(false);
+
 async function submit() {
+  if (loading.value) {
+    return;
+  }
+
+  loading.value = true;
+
   let response = await fetch(`${import.meta.env.VITE_API_URL}/api/auth/login`, {
     method: 'POST',
     headers: {
@@ -29,8 +38,12 @@ async function submit() {
   if (response.status !== 200) {
     error.set(body.error || body.message);
 
+    loading.value = false;
+
     return;
   }
+
+  loading.value = false;
 
   auth.authenticate(body.data.token);
 }
@@ -94,7 +107,7 @@ async function submit() {
           </div>
 
           <div>
-            <Button type="submit">Login</Button>
+            <Button type="submit" :loading="loading">Login</Button>
           </div>
         </form>
       </div>

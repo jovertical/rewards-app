@@ -7,6 +7,16 @@ interface ConnectionOptions {
   models: object;
 }
 
+let reloadRecordPlugin = function reloadRecord(schema: mongoose.Schema) {
+  schema.methods.reload = async function () {
+    const record = await this.constructor.findById(this);
+    Object.assign(this, record);
+    return record;
+  };
+};
+
+mongoose.plugin(reloadRecordPlugin, {});
+
 let plugin = async (fastify: FastifyInstance, options: ConnectionOptions) => {
   try {
     mongoose.connection.on('connected', () => {

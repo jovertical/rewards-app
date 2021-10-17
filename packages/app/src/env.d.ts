@@ -13,6 +13,7 @@ interface Prize {
   description: string;
   stock: number;
   image_url?: string;
+  redeemed?: boolean;
   created_at: string;
   updated_at?: string;
 }

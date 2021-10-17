@@ -1,15 +1,18 @@
 <script setup lang="ts">
 import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
+import RedeemPrizeFormButton from '@/components/RedeemPrizeFormButton.vue';
 import PrizeHeader from '@/components/PrizeHeader.vue';
 import useAuth from '@/hooks/useAuth';
+import useError from '@/hooks/useError';
 
 let route = useRoute();
 let auth = useAuth();
+let error = useError();
 
 let prize = ref<Prize | null>(null);
 
-async function getPrize(id: string | string[]): Promise<void> {
+async function getPrize(id = route.params.id): Promise<void> {
   let response = await fetch(
     `${import.meta.env.VITE_API_URL}/api/prizes/${id}`,
     {
@@ -30,7 +33,7 @@ async function getPrize(id: string | string[]): Promise<void> {
 
 watch(auth.authenticated, (authenticated) => {
   if (authenticated) {
-    getPrize(route.params.id);
+    getPrize();
   }
 });
 
@@ -63,17 +66,40 @@ defineExpose({ prize });
               shadow
             "
           >
-            <h4 class="py-2.5 text-3xl font-eloquia">
-              {{ prize.name }}
-            </h4>
+            <div class="flex items-center justify-between">
+              <h4 class="py-2.5 text-3xl font-eloquia text-gray-darker">
+                {{ prize.name }}
+              </h4>
 
-            <div class="mt-12 border-t border-b border-gray-300">
-              <div class="py-8">
-                <button
-                  class="px-12 py-2.5 rounded-full bg-yellow text-sm font-light"
-                >
-                  Redeem &nbsp;>
-                </button>
+              <span
+                v-if="prize.redeemed"
+                class="
+                  inline-flex
+                  items-center
+                  px-2.5
+                  py-0.5
+                  rounded-full
+                  text-xs
+                  font-medium
+                  bg-green-lightest
+                  text-green-darker
+                "
+              >
+                Redeemed
+              </span>
+            </div>
+
+            <div class="mt-12 border-t border-b border-gray-light">
+              <div class="flex items-center">
+                <RedeemPrizeFormButton
+                  :prize-id="prize._id"
+                  :disabled="prize.redeemed || prize.stock === 0"
+                  @errored="error.set($event)"
+                  @submitted="prize = $event"
+                />
+                <p v-if="error.show" class="text-red ml-4">
+                  {{ error.message.value }}
+                </p>
               </div>
             </div>
 
@@ -85,7 +111,7 @@ defineExpose({ prize });
 
         <!-- Description -->
         <div class="mt-10">
-          <div class="border-t border-gray-300 py-12">
+          <div class="border-t border-gray-light py-12">
             <div v-if="prize" class="flex">
               <h5 class="text-2xl font-eloquia">Description</h5>
               <p class="ml-20 mt-1.5 font-light">
