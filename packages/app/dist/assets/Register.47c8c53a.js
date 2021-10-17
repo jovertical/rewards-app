@@ -1,0 +1,1 @@
+import{d as e,o as s,c as o,a as t}from"./vendor.94593e8d.js";const a=t("main",{class:"max-w-md mx-auto px-4 sm:px-6 lg:px-8"},"Register",-1),n=[a],p=e({setup(c){return(r,d)=>(s(),o("div",null,n))}});export{p as default};

@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-gray-900" aria-labelledby="footer-heading">
+  <footer class="bg-gray-darkest" aria-labelledby="footer-heading">
     <h2 id="footer-heading" class="sr-only">Footer</h2>
     <div
       class="
@@ -14,17 +14,17 @@
     >
       <ul role="list" class="flex justify-center">
         <li>
-          <a href="#" class="text-lg text-gray-50 hover:text-gray-200">
+          <a href="#" class="text-lg text-white hover:text-gray-lightest">
             Terms &amp; Conditions
           </a>
         </li>
 
         <li class="mx-2.5">
-          <span class="text-gray-50">|</span>
+          <span class="text-white">|</span>
         </li>
 
         <li>
-          <a href="#" class="text-lg text-gray-50 hover:text-gray-200">
+          <a href="#" class="text-lg text-white hover:text-gray-lightest">
             Privacy Policy
           </a>
         </li>

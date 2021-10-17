@@ -1,20 +1,38 @@
 <script setup lang="ts">
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 import { useRoute } from 'vue-router';
 import PrizeHeader from '../components/PrizeHeader.vue';
+import useAuth from '../hooks/useAuth';
 
 let route = useRoute();
+let auth = useAuth();
+
 let prize = ref<Prize | null>(null);
 
 async function getPrize(id: string | string[]): Promise<void> {
-  fetch(`${import.meta.env.VITE_API_URL}/api/prizes/${id}`)
-    .then((response) => response.json())
-    .then((data) => {
-      prize.value = data;
-    });
+  let response = await fetch(
+    `${import.meta.env.VITE_API_URL}/api/prizes/${id}`,
+    {
+      headers: {
+        'X-Access-Token': auth.token.value,
+      },
+    }
+  );
+
+  if (response.status !== 200) {
+    return;
+  }
+
+  let body = await response.json();
+
+  prize.value = body.data;
 }
 
-getPrize(route.params.id);
+watch(auth.authenticated, (authenticated) => {
+  if (authenticated) {
+    getPrize(route.params.id);
+  }
+});
 
 defineExpose({ prize });
 </script>

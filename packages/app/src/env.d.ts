@@ -13,4 +13,14 @@ interface Prize {
   description: string;
   stock: number;
   image_url?: string;
+  created_at: string;
+  updated_at?: string;
+}
+
+interface User {
+  _id: string;
+  name: string;
+  email: string;
+  created_at: string;
+  updated_at?: string;
 }

@@ -26,11 +26,11 @@ defineExpose({ logoUrl });
                     w-12
                     rounded-full
                     overflow-hidden
-                    bg-gray-100
+                    bg-gray-lightest
                   "
                 >
                   <svg
-                    class="h-full w-full text-gray-300"
+                    class="h-full w-full text-gray-lighter"
                     fill="currentColor"
                     viewBox="0 0 24 24"
                   >
@@ -45,8 +45,8 @@ defineExpose({ logoUrl });
                   class="
                     text-sm
                     font-bold
-                    text-gray-700
-                    group-hover:text-gray-900
+                    text-gray-darker
+                    group-hover:text-gray-darkest
                   "
                 >
                   John Doe

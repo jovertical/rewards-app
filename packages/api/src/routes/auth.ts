@@ -54,8 +54,8 @@ export default (
       schema: {
         body: S.object()
           .required(['email', 'password'])
-          .prop('email', S.string())
-          .prop('password', S.string()),
+          .prop('email', S.string().minLength(1))
+          .prop('password', S.string().minLength(1)),
       },
     },
     async function (request, reply) {

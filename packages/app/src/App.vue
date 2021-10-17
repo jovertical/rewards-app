@@ -1,16 +1,32 @@
 <script setup lang="ts">
-import Footer from './components/Footer.vue';
-import Header from './components/Header.vue';
+import { shallowRef, watch } from 'vue';
+import { useRoute } from 'vue-router';
+import AppLayout from './layouts/app.vue';
+import AuthLayout from './layouts/auth.vue';
+
+let route = useRoute();
+let layout = shallowRef(AppLayout);
+
+let layouts = {
+  app: AppLayout,
+  auth: AuthLayout,
+};
+
+watch(
+  () => route?.meta?.layout,
+  (value) => {
+    // @ts-ignore
+    let newLayout = layouts[value];
+
+    if (newLayout) {
+      layout.value = newLayout;
+    }
+  }
+);
+
+defineExpose({ layout });
 </script>
 
 <template>
-  <div class="min-h-screen bg-white">
-    <Header />
-
-    <div class="bg-gray-100">
-      <router-view />
-    </div>
-
-    <Footer />
-  </div>
+  <component :is="layout" />
 </template>

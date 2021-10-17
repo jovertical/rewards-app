@@ -36,7 +36,9 @@ export default (app: FastifyInstance): void => {
     async function (request, reply) {
       let prizes = await Prize.find();
 
-      return reply.header('Content-Type', 'application/json').send(prizes);
+      return reply.header('Content-Type', 'application/json').send({
+        data: prizes,
+      });
     }
   );
 
@@ -49,7 +51,9 @@ export default (app: FastifyInstance): void => {
     async function (request, reply) {
       let prize = await Prize.findOne({ _id: request.params.id });
 
-      return reply.header('Content-Type', 'application/json').send(prize);
+      return reply.header('Content-Type', 'application/json').send({
+        data: prize,
+      });
     }
   );
 
