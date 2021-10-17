@@ -2,7 +2,7 @@ import { ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 import { useStorage } from '@vueuse/core';
 
-export default function useAuth() {
+export default function useAuth(autoCheck = true) {
   let router = useRouter();
   let token = useStorage('auth_token', '');
 
@@ -55,7 +55,9 @@ export default function useAuth() {
   }
 
   onMounted(() => {
-    check();
+    if (autoCheck) {
+      check();
+    }
   });
 
   return {

@@ -18,7 +18,7 @@ defineExpose({ logoUrl });
           </router-link>
         </div>
 
-        <div class="flex sm:-my-px sm:ml-6 sm:space-x-8">
+        <div class="flex sm:-my-px sm:ml-6 space-x-4 sm:space-x-8">
           <router-link
             v-if="!authenticated"
             :to="{ name: 'auth.login' }"

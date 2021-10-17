@@ -43,8 +43,13 @@ export default (
 
       let newUser = await User.create(request.body);
 
-      return reply.send({
-        data: newUser,
+      return reply.status(201).send({
+        data: {
+          user: newUser,
+          token: createAuthToken({
+            userId: newUser._id,
+          }),
+        },
       });
     }
   );
