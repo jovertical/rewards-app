@@ -30,7 +30,7 @@ npm run dev
 - [Fastify - Typescript](https://www.fastify.io/) - Backend framework
 - [MongoDB](https://www.mongodb.com/) - Database
 - [Mongoose](https://mongoosejs.com/) - ORM
-- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) Production database (Running on a free cluster)
+- [MongoDB Atlas](https://www.mongodb.com/cloud/atlas) - Production database (Running on a free cluster)
 - [Heroku](https://www.heroku.com) - Frontend and Backend applications are both deployed here
 - [Lerna](https://lerna.js.org/) - To manage the Frontend and Backend seamlessly in a single repo
 
