@@ -2,7 +2,7 @@
 import logoUrl from '@/assets/images/logo.png';
 import useAuth from '@/hooks/useAuth';
 
-let { authenticated, user, logout } = useAuth();
+let { authenticated, user, logout } = useAuth(false);
 
 defineExpose({ logoUrl });
 </script>
